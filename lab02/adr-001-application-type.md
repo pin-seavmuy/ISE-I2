@@ -1,5 +1,5 @@
 # ADR-001 · Application Types for ITC Club Hub
-Version 1.0 · 2026-10-18 · Status: Proposed (2026-10-18) · Deciders: Chan Dara (PO), Sokha Pich (SM), Team
+Version 1.0 · 2026-10-18 · Status: Accepted (2026-10-18) · Deciders: Chan Dara (PO), Sokha Pich (SM), Team
 
 ## 1. User Groups & Constraints
 | Group | Device (what they use?) | Where Used (where do they use?) | Connectivity (Do they have reliable internet?) | How Often | Must Never Fail (What is the most important function?)|
