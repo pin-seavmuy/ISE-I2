@@ -6,9 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Library: Contains all application logic except main()
-add_library(clubhub_core src/banner.cpp)
+# add_library(clubhub_core src/banner.cpp)
+add_library(clubhub_core src/event.cpp src/event_csv.cpp)
 target_include_directories(clubhub_core PUBLIC include)
-target_compile_definitions(clubhub_core PRIVATE CLUBHUB_VERSION="${PROJECT_VERSION}")
+# target_compile_definitions(clubhub_core PRIVATE CLUBHUB_VERSION="${PROJECT_VERSION}")
 
 # Strict compiler warnings (treat warnings as quality gates)
 if(MSVC)
@@ -18,5 +19,6 @@ else()
 endif()
 
 # Executable: Command-line interface frontend
-add_executable(clubhub src/main.cpp)
+# add_executable(clubhub src/main.cpp)
+add_executable(clubhub src/cli/main.cpp)
 target_link_libraries(clubhub PRIVATE clubhub_core)
