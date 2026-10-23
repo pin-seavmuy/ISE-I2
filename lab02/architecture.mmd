@@ -1,0 +1,43 @@
+```mermaid
+flowchart TB
+    %% Tier 1: Presentation
+    subgraph Presentation ["1. Presentation Tier"]
+        PWA["Responsive Web / PWA<br><i>(Modelled only)</i>"]
+        CLI["C++ CLI Frontend<br><code>src/cli/main.cpp</code><br><b>[Implemented]</b>"]
+    end
+
+    %% Tier 2: Logic / Core
+    subgraph Logic ["2. Logic / Domain Tier"]
+        RS["RegistrationService<br><code>include/clubhub/</code>, <code>src/</code><br><i>(Sprint 1 - Modelled)</i>"]
+        ES["Event & CSV Loader<br><code>include/clubhub/event.hpp</code><br><code>src/event*.cpp</code><br><b>[Implemented Lab-02]</b>"]
+    end
+
+    %% Tier 3: Data Storage
+    subgraph Data ["3. Data Tier"]
+        CSV[("CSV File Storage<br><code>data/events.csv</code><br><b>[Implemented]</b>")]
+    end
+
+    %% External Systems on the side
+    subgraph External ["External Systems"]
+        MAIL[["E-mail Service"]]
+        DIR[["ITC Student Directory"]]
+    end
+
+    %% Clean Data Flow Arrows
+    CLI --> |"Runs commands"| ES
+    PWA -.-> |"HTTP / REST API"| RS
+    RS --> |"Manages"| ES
+    ES --> |"Reads & Writes"| CSV
+    RS -.-> |"Send reminders"| MAIL
+    RS -.-> |"Verify ID"| DIR
+
+    %% Visual Styling (Implemented = Blue, Modelled = Grey Dashed)
+    classDef impl fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a;
+    classDef model fill:#f3f4f6,stroke:#9ca3af,stroke-width:1.5px,stroke-dasharray: 4 4,color:#4b5563;
+    classDef ext fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#92400e;
+
+    class CLI,ES,CSV impl;
+    class PWA,RS model;
+    class MAIL,DIR ext;
+
+```

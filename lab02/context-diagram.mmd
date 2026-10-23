@@ -1,0 +1,36 @@
+```mermaid
+flowchart LR
+    %% Left column: Users / Roles
+    subgraph Users ["People (Users & Admins)"]
+        S["Student"]
+        CL["Club Leader"]
+        O["Organiser"]
+        A["Administrator"]
+    end
+
+    %% Center: The System
+    CH["ITC Club Hub System"]
+
+    %% Right column: External Systems
+    subgraph External ["External Services"]
+        MAIL[["E-mail Service"]]
+        DIR[["ITC Student Directory"]]
+    end
+
+    %% Clear, uncluttered connections
+    S <--> |"Browse events / Registrations"| CH
+    CL <--> |"Club profile / Event creation"| CH
+    O <--> |"Ticket check-in / Attendance list"| CH
+    A <--> |"Club approvals / Monthly reports"| CH
+
+    CH --> |"Send email trigger"| MAIL
+    MAIL -.-> |"Deliver email"| S
+
+    CH <--> |"Verify ID / Get student data"| DIR
+
+    %% Clean Colors
+    style CH fill:#4a86e8,stroke:#1c4587,stroke-width:2px,color:#fff
+    style Users fill:#f3f4f6,stroke:#9ca3af,stroke-width:1px
+    style External fill:#fef3c7,stroke:#d97706,stroke-width:1px
+
+```
