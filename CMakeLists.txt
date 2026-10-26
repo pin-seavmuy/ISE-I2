@@ -7,7 +7,14 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Library: Contains all application logic except main()
 # add_library(clubhub_core src/banner.cpp)
-add_library(clubhub_core src/event.cpp src/event_csv.cpp)
+# add_library(clubhub_core src/event.cpp src/event_csv.cpp)
+# Added src/Student.cpp for Lab-03
+add_library(clubhub_core 
+    src/event.cpp 
+    src/event_csv.cpp
+    src/Student.cpp
+)
+
 target_include_directories(clubhub_core PUBLIC include)
 # target_compile_definitions(clubhub_core PRIVATE CLUBHUB_VERSION="${PROJECT_VERSION}")
 
@@ -22,3 +29,22 @@ endif()
 # add_executable(clubhub src/main.cpp)
 add_executable(clubhub src/cli/main.cpp)
 target_link_libraries(clubhub PRIVATE clubhub_core)
+
+# ==============================================================================
+# Testing: GoogleTest Setup for Lab-03
+# ==============================================================================
+include(FetchContent)
+FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/archive/refs/tags/v1.15.2.zip
+)
+# For Windows/MSVC: prevent runtime mismatch errors
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+enable_testing()
+add_executable(clubhub_tests 
+    tests/StudentPrivacyTest.cpp
+)
+target_link_libraries(clubhub_tests PRIVATE clubhub_core GTest::gtest_main)
+include(GoogleTest)
+gtest_discover_tests(clubhub_tests)
