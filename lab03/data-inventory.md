@@ -1,5 +1,4 @@
-# Data Inventory · ITC Club Hub
-Version 1.0 · 2026-10-23 · Team: I2-ISE
+# Data Inventory · ITC Club Hub Version 1.0 · 2026-10-23 · Team: I2-ISE
 
 ## 1. Personal Data Inventory
 
