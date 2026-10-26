@@ -13,6 +13,7 @@ add_library(clubhub_core
     src/event.cpp 
     src/event_csv.cpp
     src/Student.cpp
+    src/ConsoleOutput.cpp
 )
 
 target_include_directories(clubhub_core PUBLIC include)
@@ -44,6 +45,7 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 add_executable(clubhub_tests 
     tests/StudentPrivacyTest.cpp
+    tests/ConsoleOutputTest.cpp
 )
 target_link_libraries(clubhub_tests PRIVATE clubhub_core GTest::gtest_main)
 include(GoogleTest)
