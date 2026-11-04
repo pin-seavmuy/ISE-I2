@@ -1,5 +1,5 @@
 # PDR-001 · Development Process for ITC Club Hub
-Status: Proposed  
+Status: Accepted  
 Date: 2026-11-04  
 Deciders: All Team Members (Team I2-ISE)  
 Lead: Product Owner  
@@ -97,3 +97,7 @@ flowchart TD
 Every team member has reviewed and approved this development process:
 
 - **Sok Dara (Product Owner):** Approved (2026-11-04)
+- **Chan Minea (Scrum Master):** Approved (2026-11-04)
+- **Pin Seavmuy (Developer):** Approved (2026-11-04)
+- **Pich Sovann (Developer):** Approved (2026-11-04)
+- **Tep Bopha (Developer):** Approved (2026-11-04)
