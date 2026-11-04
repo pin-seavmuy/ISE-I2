@@ -10,10 +10,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # add_library(clubhub_core src/event.cpp src/event_csv.cpp)
 # Added src/Student.cpp for Lab-03
 add_library(clubhub_core 
-    src/event.cpp 
-    src/event_csv.cpp
-    src/Student.cpp
-    src/ConsoleOutput.cpp
+    src/event.cpp                   # Lab-02
+    src/event_csv.cpp               # Lab-02
+    src/Student.cpp                 # Lab-03
+    src/ConsoleOutput.cpp           # Lab-03
 )
 
 target_include_directories(clubhub_core PUBLIC include)
@@ -73,3 +73,13 @@ add_executable(csv_smoke_test
 )
 target_link_libraries(csv_smoke_test PRIVATE rapidcsv GTest::gtest_main)
 gtest_discover_tests(csv_smoke_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+
+# ==============================================================================
+# Lab-04 Challenge: Cancellation Policy Unit Test (REQ-12)
+# ==============================================================================
+add_executable(cancellation_rule_test 
+    tests/cancellation_rule_test.cpp
+)
+target_include_directories(cancellation_rule_test PRIVATE include)
+target_link_libraries(cancellation_rule_test PRIVATE GTest::gtest_main)
+gtest_discover_tests(cancellation_rule_test)
