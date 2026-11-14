@@ -1,0 +1,21 @@
+flowchart TD
+    subgraph Phase1 ["Phase 1: Upfront Specification & Modeling (Weeks 5-8)"]
+        A["Requirements Elicitation & SRS<br/>(Weeks 5-6 · Product Owner)"] --> B["UML & Architecture Modeling<br/>(Week 7 · Lead Developer)"]
+        B --> C["Midterm Exam & Checkpoint 1<br/>(Week 8 · Whole Team)"]
+    end
+
+    subgraph Phase2 ["Phase 2: Sprint Cycles (Weeks 9-12)"]
+        C --> D["Sprint Planning<br/>(Sprint 1: Wk 9 / Sprint 2: Wk 11 · Scrum Master)"]
+        D --> E["Implementation & Daily Development<br/>(Developers)"]
+        E --> F["Testing & Continuous Integration<br/>(Scrum Master & Devs)"]
+        F --> G["Sprint Review & Demo to Client<br/>(Product Owner & Client)"]
+        G --> H{"Sprint 2<br/>Finished?"}
+        H -- "No (End of Sprint 1)" --> D
+    end
+
+    subgraph Phase3 ["Phase 3: Release & Delivery (Weeks 13-14)"]
+        H -- "Yes" --> I["Hardening & Bug Fixing (Week 13)<br/>(Feature freeze · Whole Team)"]
+        I --> J["Final Submission & Client Demo<br/>(Week 14 · Whole Team)"]
+    end
+
+    G -. "Feedback & Backlog Adaptation" .-> D
