@@ -1,0 +1,21 @@
+req_id,source,story_ids,design_element,test_name,status
+FR-01,N-01,US-03 US-04,EventRepository,EventTest_UpcomingEventsSorted,covered
+FR-02,N-02,US-05,RegistrationService,RegistrationService_ConfirmValidRegistration,covered
+FR-03,N-07,US-05 US-07,RegistrationService,RegistrationService_RejectsWhenEventFull,covered
+FR-04,N-08,US-05 US-06,RegistrationService,RegistrationService_RejectsDuplicateStudent,covered
+FR-05,N-04,US-08,CancellationPolicy,CancellationPolicy_Allows24hBefore,covered
+FR-06,N-09,US-09,CancellationPolicy,CancellationPolicy_RejectsInside24h,covered
+FR-07,N-02,US-04,EventRepository,EventTest_HidesPastEvents,covered
+FR-08,N-14,US-01 US-02 US-03,ClubRepository,ClubTest_RequiresApprovedStatus,covered
+FR-09,N-10,US-12 US-14,CheckInService,CheckInTest_ValidBadgeCheckIn,covered
+FR-10,N-12,US-12,CheckInService,CheckInTest_RejectsDuplicateCheckIn,covered
+FR-11,N-11,US-13,CheckInQueue,CheckInQueueTest_OfflineQueueAndSync,covered
+FR-12,N-15,US-15 US-16,ReportGenerator,ReportTest_AggregatesAndPurgesPII,covered
+FR-13,N-05,US-10 US-11,Student,StudentPrivacyTest_ConsentsToggleAndErase,covered
+NFR-01,N-10,US-12,CheckInService,Benchmark_DoorCheckInSubSecond,covered
+NFR-02,N-02,US-05,CLI,Usability_RegistrationUnder60s,covered
+NFR-03,N-11,US-13,CheckInQueue,FaultTolerance_ZeroDataLossOffline,covered
+NFR-04,N-02,US-05,StorageEngine,CrashRecovery_PreservesIntegrity,covered
+NFR-05,N-16,US-16,ConsoleOutput,StudentPrivacyTest_RedactedHidesPersonalData,covered
+NFR-06,N-01,US-04,ConsoleOutput,ConsoleOutputTest_RespectsNoColor,covered
+NFR-07,N-05,US-11,Student,StudentPrivacyTest_WithdrawingConsentErasesPhone,covered

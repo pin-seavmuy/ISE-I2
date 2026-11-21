@@ -4,7 +4,7 @@ Standard: ISO/IEC/IEEE 29148:2018 Systems and Software Engineering — Life Cycl
 ## Document History
 | Version | Date | Author | Description of Change |
 | :---: | :---: | :--- | :--- |
-| **0.1** | 2026-11-14 | Sin Meynanon | Initial draft synthesized from requirements.md and user-stories.md |
+| **0.1** | 2026-11-14 | Sok Dara | Initial draft synthesized from requirements.md and user-stories.md |
 | **1.0** | 2026-11-14 | Team I2-ISE | Baselined version 1.0 post peer-review and client agreement |
 
 ---

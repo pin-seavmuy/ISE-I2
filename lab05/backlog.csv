@@ -1,0 +1,17 @@
+id,title,role,moscow,points,value,sprint,fr_ids,issue
+US-01,Register New Club,Club Leader,Should,3,4,2,FR-08,#1
+US-02,Approve or Reject Club,Administrator,Should,3,4,2,FR-08,#2
+US-03,Publish an Event,Club Leader,Must,5,5,1,FR-01 FR-08,#3
+US-04,Browse Upcoming Events,Student,Must,3,5,1,FR-01 FR-07,#4
+US-05,Register for an Open Event,Student,Must,5,5,1,FR-02 FR-03 FR-04,#5
+US-06,Reject Duplicate Registration,Student,Must,2,4,1,FR-04,#6
+US-07,Reject Over-Capacity Registration,Student,Must,3,5,1,FR-03,#7
+US-08,Cancel Registration Before Deadline,Student,Must,3,4,1,FR-05,#8
+US-09,Reject Late Cancellation,Student,Must,2,4,1,FR-06,#9
+US-10,Opt-In for Reminder Alerts,Student,Should,2,3,2,FR-13,#10
+US-11,Withdraw Reminder Consent,Student,Should,1,3,2,FR-13,#11
+US-12,Fast Door Check-In,Organiser,Must,5,5,1,FR-09 FR-10,#12
+US-13,Offline Door Check-In Queue,Organiser,Should,5,5,2,FR-11,#13
+US-14,View Live Door Headcount,Organiser,Should,2,3,2,FR-09,#14
+US-15,Generate Monthly Attendance Report,Administrator,Should,5,4,2,FR-12,#15
+US-16,View Masked Roster for Event,Club Leader,Should,3,3,2,FR-12,#16
