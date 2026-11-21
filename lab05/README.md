@@ -19,6 +19,9 @@
 | [`backlog.csv`](./backlog.csv) | Prioritized product backlog with Planning Poker points, MoSCoW, value, and issue mapping | Complete |
 | [`traceability.csv`](./traceability.csv) | Requirements Traceability Matrix (RTM) linking FR/NFRs to stories and tests | Complete |
 | [`README.md`](./README.md) | Master synthesis, capacity calculations, quadrant chart, and change log | Complete |
+| [prototype/index.html](./prototype/index.html) | Interactive 5-screen usability prototype for registration & cancellation | Complete |
+| [prototype-validation.md](./prototype-validation.md) | Usability report with 2 external students and think-aloud findings | Complete |
+| [change-requests/CR-001.md](./change-requests/CR-001.md) | Formal Change Request for cancellation cutoff countdown timestamp | Complete |
 
 ---
 
@@ -86,3 +89,4 @@ quadrantChart
 | **0.2** | 2026-11-14 | Team I2-ISE | Requirements classification and stakeholder conflict resolution. |
 | **0.3** | 2026-11-14 | Team I2-ISE | User stories with Gherkin acceptance criteria and UC-02 specification. |
 | **1.0** | 2026-11-14 | Team I2-ISE | Formal ISO 29148 SRS baselined (`srs-v1.0`), peer review audit completed, backlog prioritized, and traceability matrix generated. |
+

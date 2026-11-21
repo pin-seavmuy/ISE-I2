@@ -1,11 +1,12 @@
-# ITC Club Hub · Software Requirements Specification (SRS)
-Standard: ISO/IEC/IEEE 29148:2018 Systems and Software Engineering — Life Cycle Processes — Requirements Engineering
+﻿# ITC Club Hub Â· Software Requirements Specification (SRS)
+Standard: ISO/IEC/IEEE 29148:2018 Systems and Software Engineering â€” Life Cycle Processes â€” Requirements Engineering
 
 ## Document History
 | Version | Date | Author | Description of Change |
 | :---: | :---: | :--- | :--- |
 | **0.1** | 2026-11-14 | Sok Dara | Initial draft synthesized from requirements.md and user-stories.md |
 | **1.0** | 2026-11-14 | Team I2-ISE | Baselined version 1.0 post peer-review and client agreement |
+| **1.1** | 2026-11-21 | Team I2-ISE | Incorporated CR-001 (explicit cancellation deadline timestamp and countdown display) post prototype validation |
 
 ---
 
@@ -44,10 +45,10 @@ ITC Club Hub replaces unorganized social media posts and manual paper sign-up sh
 ---
 
 ## 2. References
-1. *ISO/IEC/IEEE 29148:2018* — Requirements Engineering.
-2. *ISO/IEC 25010:2011* — Systems and Software Quality Requirements and Evaluation (SQuaRE).
-3. *ITC Club Hub Architecture Decision Record (ADR-001)* — `lab02/adr-001-application-type.md`.
-4. *ITC Club Hub Personal Data Inventory* — `lab03/data-inventory.md`.
+1. *ISO/IEC/IEEE 29148:2018* â€” Requirements Engineering.
+2. *ISO/IEC 25010:2011* â€” Systems and Software Quality Requirements and Evaluation (SQuaRE).
+3. *ITC Club Hub Architecture Decision Record (ADR-001)* â€” `lab02/adr-001-application-type.md`.
+4. *ITC Club Hub Personal Data Inventory* â€” `lab03/data-inventory.md`.
 
 ---
 
@@ -61,55 +62,55 @@ ITC Club Hub replaces unorganized social media posts and manual paper sign-up sh
 
 * **FR-01: Chronological Event Display**  
   The system shall display upcoming events sorted in ascending chronological order by event start time, excluding events whose start time is prior to the current system time.  
-  *Priority:* Must · *Source:* UR-01, N-01 · *Verification:* Automated Unit Test
+  *Priority:* Must Â· *Source:* UR-01, N-01 Â· *Verification:* Automated Unit Test
 
 * **FR-02: Seat Reservation**  
   The system shall create a registration record with status `Registered` and decrement the remaining seat count when a valid student registers for an open event.  
-  *Priority:* Must · *Source:* UR-02, N-02 · *Verification:* Automated Integration Test
+  *Priority:* Must Â· *Source:* UR-02, N-02 Â· *Verification:* Automated Integration Test
 
 * **FR-03: Capacity Limit Enforcement (Business Rule 1)**  
   The system shall reject any registration attempt for an event whose confirmed registrations equal or exceed its maximum defined capacity.  
-  *Priority:* Must · *Source:* UR-05, N-07 · *Verification:* Automated Boundary Test
+  *Priority:* Must Â· *Source:* UR-05, N-07 Â· *Verification:* Automated Boundary Test
 
 * **FR-04: Duplicate Registration Rejection (Business Rule 2)**  
   The system shall reject any registration attempt if a record containing the identical `eventId` and `studentId` already exists.  
-  *Priority:* Must · *Source:* UR-02, N-08 · *Verification:* Automated Unit Test
+  *Priority:* Must Â· *Source:* UR-02, N-08 Â· *Verification:* Automated Unit Test
 
 * **FR-05: Valid Registration Cancellation (Business Rule 3A)**  
   The system shall cancel an active registration and increment available capacity by 1 if the cancellation timestamp is at least 24 hours prior to event start time.  
-  *Priority:* Must · *Source:* UR-03, N-04 · *Verification:* Automated Boundary Test
+  *Priority:* Must Â· *Source:* UR-03, N-04 Â· *Verification:* Automated Boundary Test
 
 * **FR-06: Late Cancellation Rejection (Business Rule 3B)**  
   The system shall reject any cancellation attempt if the cancellation timestamp is less than 24 hours prior to event start time, maintaining status as `Registered`.  
-  *Priority:* Must · *Source:* UR-03, N-09 · *Verification:* Automated Boundary Test
+  *Priority:* Must Â· *Source:* UR-03, N-09 Â· *Verification:* Automated Boundary Test
 
 * **FR-07: Past Event Rejection (Business Rule 4)**  
   The system shall reject registration requests for events whose start timestamp is less than or equal to the current system time.  
-  *Priority:* Must · *Source:* UR-01, N-02 · *Verification:* Automated Unit Test
+  *Priority:* Must Â· *Source:* UR-01, N-02 Â· *Verification:* Automated Unit Test
 
 * **FR-08: Approved Club Gatekeeper (Business Rule 5)**  
   The system shall permit event publication exclusively to clubs whose administrative approval status is `Approved`.  
-  *Priority:* Must · *Source:* UR-08, N-14 · *Verification:* Automated Integration Test
+  *Priority:* Must Â· *Source:* UR-08, N-14 Â· *Verification:* Automated Integration Test
 
 * **FR-09: Attendance Recording**  
   The system shall record attendee check-in at the door by transitioning ticket status from `Registered` to `CheckedIn` with a recorded timestamp.  
-  *Priority:* Must · *Source:* UR-06, N-10 · *Verification:* Automated Integration Test
+  *Priority:* Must Â· *Source:* UR-06, N-10 Â· *Verification:* Automated Integration Test
 
 * **FR-10: Anti-Passback Ticket Fraud Prevention**  
   The system shall reject any check-in attempt using a ticket ID whose status is already `CheckedIn`.  
-  *Priority:* Must · *Source:* UR-06, N-12 · *Verification:* Automated Unit Test
+  *Priority:* Must Â· *Source:* UR-06, N-12 Â· *Verification:* Automated Unit Test
 
 * **FR-11: Offline Check-In Queuing**  
   The system shall queue check-in transactions in a local offline buffer when disconnected and synchronize them idempotently upon reconnection.  
-  *Priority:* Must · *Source:* UR-07, N-11 · *Verification:* Automated Integration Test
+  *Priority:* Must Â· *Source:* UR-07, N-11 Â· *Verification:* Automated Integration Test
 
 * **FR-12: Anonymized Administrative Reporting**  
   The system shall generate monthly participation reports containing aggregate attendee counts per club while excluding individual student IDs, names, and contact details.  
-  *Priority:* Must · *Source:* UR-09, N-15 · *Verification:* Inspection & Test
+  *Priority:* Must Â· *Source:* UR-09, N-15 Â· *Verification:* Inspection & Test
 
 * **FR-13: Reminders Consent Management**  
   The system shall maintain email and SMS reminder options as disabled by default, activating alerts only upon explicit opt-in and purging numbers upon consent withdrawal.  
-  *Priority:* Should · *Source:* UR-04, N-05 · *Verification:* Automated Unit Test
+  *Priority:* Should Â· *Source:* UR-04, N-05 Â· *Verification:* Automated Unit Test
 
 ### 3.3 Usability Requirements
 * **NFR-01: First-Time Registration Speed**  

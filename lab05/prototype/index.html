@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ITC ClubHub - Registration Prototype</title>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body { background-color: #f1f5f9; margin: 0; padding: 20px; color: #1e293b; display: flex; justify-content: center; }
+    .phone-container { width: 100%; max-width: 480px; background: #ffffff; min-height: 650px; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; }
+    header { background: #1e3a8a; color: white; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 1.15rem; margin: 0; }
+    header nav a { color: #bfdbfe; text-decoration: none; font-size: 0.85rem; margin-left: 12px; font-weight: 500; }
+    header nav a:hover { color: #ffffff; }
+    main { padding: 20px; flex: 1; }
+    section { display: none; }
+    section:target { display: block; }
+    #events-catalog { display: block; }
+    body:has(#event-detail:target) #events-catalog,
+    body:has(#event-full:target) #events-catalog,
+    body:has(#registration-confirm:target) #events-catalog,
+    body:has(#my-registrations:target) #events-catalog,
+    body:has(#cancellation-success:target) #events-catalog {
+      display: none;
+    }
+    .badge { display: inline-block; padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+    .badge-open { background: #dcfce7; color: #15803d; }
+    .badge-full { background: #fee2e2; color: #b91c1c; }
+    .card { border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-bottom: 14px; background: #fafafa; }
+    .card h3 { margin: 0 0 8px 0; font-size: 1.05rem; }
+    .card p { margin: 4px 0; font-size: 0.85rem; color: #64748b; }
+    .btn { display: inline-block; width: 100%; text-align: center; padding: 10px 16px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.9rem; cursor: pointer; border: none; margin-top: 10px; }
+    .btn-primary { background: #2563eb; color: white; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-secondary { background: #e2e8f0; color: #334155; }
+    .btn-secondary:hover { background: #cbd5e1; }
+    .btn-danger { background: #ef4444; color: white; }
+    .btn-danger:hover { background: #dc2626; }
+    .btn-disabled { background: #cbd5e1; color: #94a3b8; cursor: not-allowed; }
+    .banner-success { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46; border-radius: 8px; padding: 14px; text-align: center; margin-bottom: 16px; }
+    .deadline-warning { background: #fffbeb; border: 1px solid #fef3c7; color: #92400e; padding: 10px; border-radius: 6px; font-size: 0.8rem; margin: 12px 0; }
+  </style>
+</head>
+<body>
+
+<div class="phone-container">
+  <header>
+    <h1>🎓 ITC ClubHub</h1>
+    <nav>
+      <a href="#events-catalog">Events</a>
+      <a href="#my-registrations">My Passes</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Screen 1: Upcoming Events Catalog -->
+    <section id="events-catalog">
+      <h2>Upcoming Events</h2>
+      <p style="font-size: 0.85rem; color: #64748b;">Browse campus club workshops and reserved sessions.</p>
+      
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <div>
+            <h3>Arduino & Robotics 101</h3>
+            <p>📅 Dec 12, 2026 · 14:00 | 📍 STEM Lab 3</p>
+            <p>Seats: 28 / 30 registered</p>
+          </div>
+          <span class="badge badge-open">Open (2 left)</span>
+        </div>
+        <a href="#event-detail" class="btn btn-primary">View & Register</a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <div>
+            <h3>AI Hackathon Info Session</h3>
+            <p>📅 Dec 15, 2026 · 09:00 | 📍 Hall A</p>
+            <p>Seats: 50 / 50 registered</p>
+          </div>
+          <span class="badge badge-full">Sold Out</span>
+        </div>
+        <a href="#event-full" class="btn btn-secondary">Check Waitlist / Info</a>
+      </div>
+    </section>
+
+    <!-- Screen 2: Event Detail & Registration -->
+    <section id="event-detail">
+      <a href="#events-catalog" style="font-size: 0.85rem; color: #2563eb; text-decoration: none;">← Back to Catalog</a>
+      <h2 style="margin-top: 12px;">Arduino & Robotics 101</h2>
+      <p style="color: #64748b; font-size: 0.9rem;">Organized by <strong>Robotics Club ITC</strong></p>
+      
+      <div style="background: #f8fafc; border-left: 4px solid #2563eb; padding: 10px 14px; margin: 16px 0;">
+        <p style="margin: 0; font-size: 0.85rem;"><strong>Time:</strong> Dec 12, 2026 at 14:00</p>
+        <p style="margin: 4px 0 0 0; font-size: 0.85rem;"><strong>Venue:</strong> STEM Lab 3 (Building A)</p>
+        <p style="margin: 4px 0 0 0; font-size: 0.85rem;"><strong>Capacity:</strong> 30 students max</p>
+      </div>
+
+      <p style="font-size: 0.85rem; line-height: 1.4;">
+        Hands-on introduction to microcontrollers, sensors, and actuator control. Hardware kits are supplied at the venue.
+      </p>
+
+      <div class="deadline-warning">
+        ⚠️ <strong>Strict Rule:</strong> Cancellations permitted up to 24 hours prior to event start. Duplicate bookings are automatically blocked.
+      </div>
+
+      <a href="#registration-confirm" class="btn btn-primary">Confirm My Registration</a>
+      <a href="#events-catalog" class="btn btn-secondary">Cancel</a>
+    </section>
+
+    <!-- Screen 3: Registration Confirmation -->
+    <section id="registration-confirm">
+      <div class="banner-success">
+        <h3 style="margin: 0; font-size: 1.1rem;">🎉 Registration Confirmed!</h3>
+        <p style="margin: 6px 0 0 0; font-size: 0.85rem;">Your seat is reserved for Arduino & Robotics 101.</p>
+      </div>
+
+      <div class="card" style="text-align: center; border: 2px dashed #94a3b8;">
+        <p style="font-size: 0.8rem; text-transform: uppercase; color: #64748b; margin: 0;">Digital Entry Pass Code</p>
+        <h1 style="font-family: monospace; letter-spacing: 3px; color: #1e3a8a; margin: 8px 0;">ITC-ROB-4921</h1>
+        <p style="font-size: 0.8rem; color: #64748b;">Present this code or your student badge at door check-in.</p>
+      </div>
+
+      <div style="font-size: 0.85rem; color: #475569; margin: 16px 0;">
+        <p><strong>Student:</strong> Sok Dara (s12345@itc.edu.kh)</p>
+        <p><strong>Cancellation Deadline:</strong> Dec 11, 2026 at 14:00</p>
+      </div>
+
+      <a href="#my-registrations" class="btn btn-primary">Go to My Passes</a>
+      <a href="#events-catalog" class="btn btn-secondary">Browse More Events</a>
+    </section>
+
+    <!-- Screen 4: My Registrations & 24h Cancellation -->
+    <section id="my-registrations">
+      <h2>My Active Passes</h2>
+      <p style="font-size: 0.85rem; color: #64748b;">Manage your confirmed event registrations.</p>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: start;">
+          <div>
+            <h3>Arduino & Robotics 101</h3>
+            <p>📅 Dec 12, 2026 · 14:00 | Pass: <code>ITC-ROB-4921</code></p>
+            <p style="color: #15803d; font-weight: 500;">Status: Confirmed</p>
+          </div>
+          <span class="badge badge-open">Active</span>
+        </div>
+
+        <div class="deadline-warning" style="margin-top: 8px;">
+          ⏳ Cancellation allowed until <strong>Dec 11, 14:00</strong> (&gt; 24h prior).
+        </div>
+
+        <a href="#cancellation-success" class="btn btn-danger">Cancel This Registration</a>
+      </div>
+
+      <a href="#events-catalog" class="btn btn-secondary">← Back to Catalog</a>
+    </section>
+
+    <!-- Screen 5: Sold-Out State & Waiting Notification -->
+    <section id="event-full">
+      <a href="#events-catalog" style="font-size: 0.85rem; color: #2563eb; text-decoration: none;">← Back to Catalog</a>
+      <h2 style="margin-top: 12px;">AI Hackathon Info Session</h2>
+      <span class="badge badge-full">Event Capacity Reached (50 / 50)</span>
+
+      <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 12px 14px; margin: 16px 0;">
+        <p style="margin: 0; font-size: 0.85rem; color: #991b1b;">
+          <strong>Registration Closed:</strong> All available seats have been booked.
+        </p>
+      </div>
+
+      <p style="font-size: 0.85rem; line-height: 1.4; color: #475569;">
+        Per ITC ClubHub policy, walk-ins are not permitted when venue capacity is exhausted.
+      </p>
+
+      <div class="card" style="margin-top: 16px;">
+        <h4 style="margin: 0 0 6px 0;">Get Notified on Cancellations?</h4>
+        <p style="font-size: 0.8rem; margin: 0 0 10px 0;">Would you like an instant alert if another student cancels &gt;24h before?</p>
+        <button class="btn btn-primary" onclick="alert('Subscribed to seat vacancy alerts!')">Opt-in for Vacancy Alert</button>
+      </div>
+
+      <a href="#events-catalog" class="btn btn-secondary" style="margin-top: 10px;">Return to Catalog</a>
+    </section>
+
+    <!-- Screen 6: Cancellation Confirmation State -->
+    <section id="cancellation-success">
+      <div class="banner-success" style="background: #fef2f2; border-color: #fecaca; color: #991b1b;">
+        <h3 style="margin: 0; font-size: 1.1rem;">Registration Cancelled</h3>
+        <p style="margin: 6px 0 0 0; font-size: 0.85rem;">Your seat for Arduino & Robotics 101 has been released.</p>
+      </div>
+      <p style="font-size: 0.85rem; color: #64748b; text-align: center;">
+        The vacancy is now open to other students on the catalog.
+      </p>
+      <a href="#events-catalog" class="btn btn-primary">Return to Events</a>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>
